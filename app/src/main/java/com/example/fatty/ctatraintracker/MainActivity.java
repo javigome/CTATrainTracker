@@ -2,11 +2,15 @@ package com.example.fatty.ctatraintracker;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -34,7 +38,56 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
 
         //returns a view for each object in a collection of data objects you provide,
         // and can be used with a list-based user interface widgets such as ListView or Spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, myList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myList){
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                //get the current item from ListView
+                View view = super.getView(position, convertView, parent);
+                // 0 = red = #f70000
+                if (position == 0) {
+                    //Set background color for ListView regular row/item
+                    view.setBackgroundColor(Color.parseColor("#f70000"));
+                }
+                // 1 = blue - #0834e0
+                else if (position == 1){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#0734e0"));
+                }
+                //2 = brown - #a6692b
+                else if (position == 2){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#a6692b"));
+                }
+                //3 = green - #009900
+                else if (position == 3){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#009900"));
+                }
+                //4 = orange - #ffa500
+                else if (position == 4){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#ffa500"));
+                }
+                //5 = pink - #ffc0cb
+                else if (position == 5){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#ffc0cb"));
+                }
+                //6 = purple - #800080
+                else if (position == 6){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#800080"));
+                }
+                //7 = yellow - #ffff00
+                else if (position == 7){
+                    //Set Color
+                    view.setBackgroundColor(Color.parseColor("#ffff00"));
+                }
+
+                return view;
+            }
+        };
 
         //Bind to new Adapter
         setListAdapter(adapter);
@@ -71,4 +124,6 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
         intent.putExtra("index", i);
         startActivity(intent);
     }
+
+
 }
